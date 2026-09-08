@@ -83,3 +83,5 @@ function.
 See the progress notes in the project's memory. Confirmed finding to
 date: **remote stack overflow in `rtw_get_wps_attr_content` (rtl8723bs)** via
 a "Selected Registrar" WPS attribute — reproducible with `kohunt wps r8723bs.ko`.
+Reported upstream:
+[lore.kernel.org/all/20260901072249.366750-1-sha0@badchecksum.net](https://lore.kernel.org/all/20260901072249.366750-1-sha0@badchecksum.net/).
