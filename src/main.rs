@@ -233,7 +233,12 @@ fn collect_ko(root: &Path, out: &mut Vec<PathBuf>) {
     if let Ok(rd) = std::fs::read_dir(root) {
         for e in rd.flatten() {
             let p = e.path();
-            if p.is_dir() {
+            // DirEntry::file_type() does NOT follow symlinks (unlike
+            // Path::is_dir()), so a symlinked directory that cycles back to
+            // an ancestor is treated as a leaf here instead of recursed into
+            // forever.
+            let is_real_dir = e.file_type().map(|t| t.is_dir()).unwrap_or(false);
+            if is_real_dir {
                 collect_ko(&p, out);
             } else {
                 let n = p.to_string_lossy();
