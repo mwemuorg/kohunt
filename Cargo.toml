@@ -1,0 +1,16 @@
+[package]
+name = "kohunt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libmwemu = { path = "/home/sha0/src/mwemuorg/mwemu/crates/libmwemu" }
+zstd = "0.13"
+env_logger = "0.11"
+
+[[bin]]
+name = "kohunt"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 2
